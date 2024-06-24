@@ -1,0 +1,259 @@
+@startuml
+class com.example.basketballcourts.gps {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
+~ Button btnAdr
+~ TextView et1
++ {static} gps newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+class com.example.basketballcourts.MyReceiver {
++ void onReceive(Context,Intent)
++ boolean isOnline(Context)
+}
+
+class com.example.basketballcourts.Login {
+~ Button loginButton
+~ EditText etEmail
+~ EditText etPassword
+~ Button newUser
+~ CheckBox ck
+~ SharedPreferences sp
+~ FirebaseAuth Auth
+~ FirebaseDatabase firebaseDatabase
+~ DatabaseReference myRef
+~ BroadcastReceiver broadcastReceiver
+# void onCreate(Bundle)
++ void onClick(View)
+# void registerNetworkBroadcastReceiver()
+# void unregisterNetwork()
+# void onDestroy()
+}
+
+
+class com.example.basketballcourts.Search {
+- RecyclerView recyclerView
+- CourtAdapter courtAdapter
+- ArrayList<Courts> courtsList
+- ArrayList<String> cities
+- ArrayList<Courts> filteredCourtsList
+- TextView filter
+- ArrayList<Integer> cList
+- boolean[] selectedCities
+- String[] sCities
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void showFilterDialog()
+- void resetSelections()
+}
+
+
+class com.example.basketballcourts.FirstActivity {
+~ Button btnAdr
+~ TextView et1
+# void onCreate(Bundle)
+}
+
+
+class com.example.basketballcourts.Courts {
+- String name
+- String city
+- String email
+- String phone
++ String getName()
++ void setName(String)
++ String getCity()
++ void setCity(String)
++ String getEmail()
++ void setEmail(String)
++ String getPhone()
++ void setPhone(String)
+}
+
+
+class com.example.basketballcourts.HomePage {
+~ BottomNavigationView bottomNavigationView
+# void onCreate(Bundle)
+- void replaceFragment(Fragment)
+}
+
+
+class com.example.basketballcourts.MapsActivity {
+- GoogleMap mMap
+- String address
+# void onCreate(Bundle)
++ void onMapReady(GoogleMap)
++ boolean onSupportNavigateUp()
++ void goBackToPreviousActivity(View)
+}
+
+
+class com.example.basketballcourts.Splash {
+- ImageView img
+~ SharedPreferences sp
+# void onCreate(Bundle)
+}
+
+
+class com.example.basketballcourts.User {
+- String name
+- String pass
+- String email
+- String phone
+- String picture
++ String getName()
++ void setName(String)
++ String getPass()
++ void setPass(String)
++ String getEmail()
++ void setEmail(String)
++ String getPhone()
++ void setPhone(String)
++ String getPicture()
++ void setPicture(String)
++ String toString()
+}
+
+
+class com.example.basketballcourts.MainActivity {
+- Button loginButton
+- Button signUpButton
+# void onCreate(Bundle)
++ void loadFragment(Fragment)
+}
+
+
+class com.example.basketballcourts.CourtAdapter {
+~ ArrayList<Courts> courts
+~ Context context
++ MyViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MyViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.basketballcourts.CourtAdapter$MyViewHolder {
++ TextView courtName
++ TextView courtCity
++ TextView mail
+~ Button mapsBtn
+~ Button phoneBtn
+}
+
+class com.example.basketballcourts.gps2 {
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+~ Button btnGeo
+- String mParam2
+~ TextView et4
++ {static} gps2 newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+
+
+class com.example.basketballcourts.SignUp {
+~ EditText etUserName
+~ EditText etPassword
+~ EditText etEmail
+~ EditText etNumber
+~ Button submitButton
+~ ImageView profileImage
+~ Uri uri
+~ AlertDialog.Builder adb
+~ AlertDialog ad
+- {static} int MY_CAMERA_REQUEST_CODE
+~ String picture
+~ String fromCamera
+~ ActivityResultLauncher activityResultLauncher
+~ int flag
+~ byte[] bytes
+~ SharedPreferences sp
+~ FirebaseDatabase firebaseDatabase
+~ FirebaseAuth firebaseAuth
+~ DatabaseReference myref
+~ Intent go
+~ String picName
+~ StorageReference mStorageRef
+- {static} int FROM_GALLERY
+- {static} int FROM_CAMERA
+~ boolean f
+# void onCreate(Bundle)
+- String getFileExtension(Uri)
++ void onRequestPermissionsResult(int,String[],int[])
++ void onClick(View)
++ void createUser()
+}
+
+
+class com.example.basketballcourts.LoginFragment {
+- Button loginButton
+- EditText etEmail
+- EditText etPassword
+- Button newUserButton
+- CheckBox ck
+- SharedPreferences sp
+- FirebaseAuth auth
+- FirebaseDatabase firebaseDatabase
+- DatabaseReference myRef
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onClick(View)
+}
+
+
+class com.example.basketballcourts.SignUpFragment {
+- EditText etUserName
+- Button submitButton
+- ImageView profileImage
+- Uri uri
+- AlertDialog.Builder adb
+- AlertDialog ad
+- {static} int MY_CAMERA_REQUEST_CODE
+- String picName
+- ActivityResultLauncher activityResultLauncher
+- int flag
+- byte[] bytes
+- SharedPreferences sp
+- FirebaseDatabase firebaseDatabase
+- FirebaseAuth firebaseAuth
+- DatabaseReference myRef
+- StorageReference mStorageRef
+- boolean f
+- {static} int FROM_GALLERY
+- {static} int FROM_CAMERA
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- String getFileExtension(Uri)
++ void onClick(View)
+}
+
+
+
+
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.gps
+android.content.BroadcastReceiver <|-- com.example.basketballcourts.MyReceiver
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.Login
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.Login
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.Search
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.FirstActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.HomePage
+com.google.android.gms.maps.OnMapReadyCallback <|.. com.example.basketballcourts.MapsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.MapsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.Splash
+java.io.Serializable <|.. com.example.basketballcourts.User
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.MainActivity
+com.example.basketballcourts.Adapter <|-- com.example.basketballcourts.CourtAdapter
+com.example.basketballcourts.CourtAdapter +.. com.example.basketballcourts.CourtAdapter$MyViewHolder
+com.example.basketballcourts.ViewHolder <|-- com.example.basketballcourts.CourtAdapter$MyViewHolder
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.gps2
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.SignUp
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.SignUp
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.LoginFragment
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.LoginFragment
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.SignUpFragment
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.SignUpFragment
+@enduml

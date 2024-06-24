@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "817244359071",
+    "project_id": "my-project-fa71e",
+    "storage_bucket": "my-project-fa71e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817244359071:android:7bd50779cf58f2786ad5aa",
+        "android_client_info": {
+          "package_name": "com.example.basketballcourts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrGOqPmwbRuy5OjWPEnluBydDLP2YVE_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

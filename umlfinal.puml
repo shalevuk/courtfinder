@@ -1,0 +1,207 @@
+@startuml
+class com.example.basketballcourts.MyReceiver {
++ void onReceive(Context,Intent)
++ boolean isOnline(Context)
+}
+
+class com.example.basketballcourts.Search {
+- RecyclerView recyclerView
+- CourtAdapter courtAdapter
+- ArrayList<Courts> courtsList
+- ArrayList<String> cities
+- ArrayList<Courts> filteredCourtsList
+- TextView filter
+- ArrayList<Integer> cList
+- boolean[] selectedCities
+- String[] sCities
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void showFilterDialog()
+- void resetSelections()
+}
+
+
+class com.example.basketballcourts.Courts {
+- String name
+- String city
+- String email
+- String phone
+- String street
+- String housenum
++ String getName()
++ void setName(String)
++ String getCity()
++ void setCity(String)
++ String getEmail()
++ void setEmail(String)
++ String getPhone()
++ void setPhone(String)
++ String getStreet()
++ void setStreet(String)
++ String getHousenum()
++ void setHousenum(String)
+}
+
+
+class com.example.basketballcourts.HomePage {
+~ BottomNavigationView bottomNavigationView
+~ BroadcastReceiver broadcastReceiver
+# void onCreate(Bundle)
+- void replaceFragment(Fragment)
+# void registerNetworkBroadcastReceiver()
+# void unregisterNetwork()
+# void onDestroy()
+}
+
+
+class com.example.basketballcourts.MapsActivity {
+- {static} int REQUEST_LOCATION_PERMISSION
+- GoogleMap mMap
+- String address
+# void onCreate(Bundle)
++ void onMapReady(GoogleMap)
+- void enableMyLocation()
++ void onRequestPermissionsResult(int,String[],int[])
++ boolean onSupportNavigateUp()
+}
+
+
+class com.example.basketballcourts.Splash {
+- ImageView img
+~ SharedPreferences sp
+# void onCreate(Bundle)
+}
+
+
+class com.example.basketballcourts.User {
+- String name
+- String email
+- String pass
+- String phone
+- String picture
++ String getName()
++ void setName(String)
++ String getPass()
++ void setPass(String)
++ String getEmail()
++ void setEmail(String)
++ String getPhone()
++ void setPhone(String)
++ String getPicture()
++ void setPicture(String)
++ String toString()
+}
+
+
+class com.example.basketballcourts.MainActivity {
+~ BottomNavigationView bottomNavigationView
+~ ImageView img1
+~ TextView tv1
+~ BroadcastReceiver broadcastReceiver
+# void onCreate(Bundle)
+- void replaceFragment(Fragment)
+# void registerNetworkBroadcastReceiver()
+# void unregisterNetwork()
+# void onDestroy()
+}
+
+
+class com.example.basketballcourts.CourtAdapter {
+~ ArrayList<Courts> courts
+~ Context context
++ MyViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(MyViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.basketballcourts.CourtAdapter$MyViewHolder {
++ TextView courtName
++ TextView courtCity
++ TextView mail
+~ ImageButton mapsBtn
+~ ImageButton phoneBtn
+}
+
+class com.example.basketballcourts.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class com.example.basketballcourts.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class com.example.basketballcourts.LoginFragment {
+~ CheckBox checkBox
+~ SharedPreferences sp
+~ Button Reg
+~ EditText pass
+~ String password
+~ String mail
+- {static} String ARG_PARAM1
+- {static} String ARG_PARAM2
+- String mParam1
+- String mParam2
++ {static} LoginFragment newInstance(String,String)
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onClick(View)
+}
+
+
+class com.example.basketballcourts.SignUpFragment {
+- EditText etUserName
+- Button submitButton
+- ImageView profileImage
+- Uri uri
+- AlertDialog.Builder adb
+- AlertDialog ad
+- {static} int MY_CAMERA_REQUEST_CODE
+- String picName
+- ActivityResultLauncher activityResultLauncher
+- int flag
+- byte[] bytes
+- SharedPreferences sp
+- FirebaseDatabase firebaseDatabase
+- FirebaseAuth firebaseAuth
+- DatabaseReference myRef
+- StorageReference mStorageRef
+- boolean f
+- {static} int FROM_GALLERY
+- {static} int FROM_CAMERA
+- CheckBox checkBox
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- String getFileExtension(Uri)
++ void onClick(View)
+}
+
+
+class com.example.basketballcourts.AddFragment {
+- EditText editTextEmail
+- Button buttonAddCourt
+- DatabaseReference databaseReference
++ void onCreate(Bundle)
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void addCourt()
+- void clearFields()
+}
+
+
+
+
+android.content.BroadcastReceiver <|-- com.example.basketballcourts.MyReceiver
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.Search
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.HomePage
+com.google.android.gms.maps.OnMapReadyCallback <|.. com.example.basketballcourts.MapsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.MapsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.Splash
+java.io.Serializable <|.. com.example.basketballcourts.User
+androidx.appcompat.app.AppCompatActivity <|-- com.example.basketballcourts.MainActivity
+com.example.basketballcourts.Adapter <|-- com.example.basketballcourts.CourtAdapter
+com.example.basketballcourts.CourtAdapter +.. com.example.basketballcourts.CourtAdapter$MyViewHolder
+com.example.basketballcourts.ViewHolder <|-- com.example.basketballcourts.CourtAdapter$MyViewHolder
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.LoginFragment
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.LoginFragment
+com.example.basketballcourts.OnClickListener <|.. com.example.basketballcourts.SignUpFragment
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.SignUpFragment
+androidx.fragment.app.Fragment <|-- com.example.basketballcourts.AddFragment
+@enduml

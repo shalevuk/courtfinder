@@ -1,0 +1,94 @@
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFFFFF"
+tools:context=".MainActivity">
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"
+    android:src="@drawable/bkkpic" />
+
+<FrameLayout
+    android:id="@+id/frameLayoutBottom"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</FrameLayout>
+
+<LinearLayout
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+</LinearLayout>
+
+<com.google.android.material.bottomappbar.BottomAppBar
+    android:id="@+id/bottomAppBar1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="#FFFFFF"
+    app:fabCradleMargin="20dp"
+    app:fabCradleRoundedCornerRadius="20dp"
+    tools:ignore="BottomAppBar">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/entrance" />
+</com.google.android.material.bottomappbar.BottomAppBar>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bkpic" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="650sp"
+        android:text="WELCOME TO FOOTBALL COURTS"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:textColor="#000000"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/centerTextView"
+        android:layout_width="399dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="500sp"
+        android:background="#B36189"
+        android:text="חפשו את המגרש שמתאים לכם ומצאו חברים לשחק איתם!"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
